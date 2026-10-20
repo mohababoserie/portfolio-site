@@ -1,0 +1,707 @@
+<title>Mohab Medhat Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500..700&family=Playfair+Display:wght@400&display=swap">
+<style>
+/* Layout: editorial ink on white. A regular-weight serif carries every headline; the UI stays achromatic.
+   Work samples sit inside large 64px "pill" showcase cards; panels are white with a faint inset ring. Light theme by design. */
+:root {
+  --ink: #000000;
+  --charcoal: #13151b;
+  --graphite: #2d313f;
+  --slate: #525769;
+  --ash: #777d90;
+  --fog: #9fa5ba;
+  --canvas: #ffffff;
+  --frost: #f7f8fb;
+  --tint: #f4f5fb;
+  --line: rgba(12, 41, 126, .1);
+  --ring: rgba(12, 41, 126, .07) 0 0 0 1px inset;
+  --nav-bg: rgba(255, 255, 255, .86);
+  --on-ink: #f7f8fb;
+
+  --serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  --sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --r-card: clamp(36px, 5.4vw, 64px);
+  --r-panel: 24px;
+  --r-img: 16px;
+  --max: 1200px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px)); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--canvas); color: var(--ink);
+  font-family: var(--sans); font-size: 17px; font-weight: 500; line-height: 1.55; letter-spacing: -.02em;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--nav-bg); }
+h1, h2, h3, h4, p, dl, dd { margin: 0; }
+p, .pd { text-wrap: pretty; }
+img { display: block; max-width: 100%; height: auto; }
+button { font: inherit; color: inherit; letter-spacing: inherit; cursor: pointer; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.num { font-feature-settings: "tnum"; font-variant-numeric: tabular-nums; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+.sec { padding-block: 120px; }
+.sec.frost { background: var(--frost); }
+
+/* Type */
+.display { font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 7vw, 64px); line-height: 1.12; letter-spacing: -.02em; text-wrap: balance; }
+.h-sec { font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 5vw, 50px); line-height: 1.16; letter-spacing: -.02em; text-wrap: balance; }
+.h-idx { font-family: var(--serif); font-weight: 400; font-size: 36px; line-height: 1.2; letter-spacing: -.02em; }
+.h-card { display: block; font-family: var(--sans); font-weight: 650; font-size: 20px; line-height: 1.3; letter-spacing: -.02em; text-wrap: balance; }
+.lead { text-wrap: pretty; font-size: 20px; line-height: 1.5; letter-spacing: -.02em; color: var(--slate); max-width: 34em; }
+.small { font-size: 15px; letter-spacing: -.025em; }
+.cap { font-size: 13px; line-height: 1.4; letter-spacing: -.026em; color: var(--ash); }
+.chip { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; line-height: 1.4; letter-spacing: -.026em; color: var(--slate); }
+.chip svg { flex: none; }
+
+/* Buttons and links */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 9999px; padding: 12px 24px; font-size: 15px; font-weight: 600; letter-spacing: -.025em; line-height: 1.2; text-decoration: none; white-space: nowrap; border: 1px solid transparent; transition: background-color .2s ease, border-color .2s ease, color .2s ease; }
+.btn-ink { background: var(--ink); color: var(--on-ink); }
+.btn-ink:hover { background: var(--charcoal); }
+.btn-ghost { background: transparent; color: var(--graphite); border-color: var(--fog); }
+.btn-ghost:hover { border-color: var(--graphite); color: var(--ink); }
+.btn-sm { padding: 8px 16px; font-size: 13px; letter-spacing: -.026em; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.tlink { text-decoration: underline; text-decoration-color: var(--fog); text-underline-offset: 4px; text-decoration-thickness: 1px; transition: text-decoration-color .2s ease; background: none; border: 0; padding: 0; }
+.tlink:hover { text-decoration-color: var(--ink); }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--nav-bg); -webkit-backdrop-filter: saturate(180%) blur(16px); backdrop-filter: saturate(180%) blur(16px); }
+.nav .wrap { display: flex; align-items: center; gap: 24px; min-height: 64px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 650; font-size: 15px; letter-spacing: -.025em; color: var(--charcoal); }
+.badge-m { width: 32px; height: 32px; border-radius: 9999px; background: var(--ink); color: var(--canvas); display: grid; place-items: center; font-family: var(--serif); font-size: 17px; line-height: 1; letter-spacing: 0; padding-bottom: 2px; }
+.nav nav { display: flex; align-items: center; gap: 4px; margin-left: auto; background: var(--frost); border-radius: 9999px; padding: 4px; }
+.nav nav a { font-size: 15px; letter-spacing: -.025em; color: var(--ash); text-decoration: none; padding: 6px 14px; border-radius: 9999px; transition: color .2s ease; }
+.nav nav a:hover { color: var(--charcoal); }
+.nav nav a.on { background: var(--canvas); color: var(--charcoal); font-weight: 600; box-shadow: var(--ring); }
+.nav .btn { margin-left: 8px; }
+
+/* Hero */
+.hero { padding-block: 88px 0; text-align: center; }
+.hero .display { max-width: 800px; margin: 20px auto 0; }
+.hero .lead { margin: 24px auto 0; max-width: 560px; font-size: 17px; color: var(--ash); }
+.hero .actions { justify-content: center; margin-top: 36px; }
+.showcase { margin-top: 72px; background: var(--tint); border-radius: var(--r-card); padding: clamp(24px, 5vw, 64px) clamp(16px, 5vw, 64px) 0; overflow: hidden; }
+.panel { background: var(--canvas); border-radius: var(--r-panel); box-shadow: var(--ring); overflow: hidden; }
+.showcase .panel { border-radius: var(--r-panel) var(--r-panel) 0 0; }
+.showcase .panel img { width: 100%; }
+.hero .cap { margin-top: 16px; }
+.prev { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 12px 40px; margin-top: 56px; color: var(--ash); }
+.prev span { font-size: 13px; letter-spacing: -.026em; }
+.prev b { font-size: 20px; font-weight: 650; letter-spacing: -.02em; }
+
+/* Work index */
+.index { margin-top: 48px; border-top: 1px solid var(--line); }
+.irow { display: grid; grid-template-columns: 168px minmax(0, 1fr) auto; gap: 32px; align-items: center; padding-block: 28px; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); }
+.irow .thumb { border-radius: 12px; box-shadow: var(--ring); overflow: hidden; aspect-ratio: 16 / 9; background: var(--frost); }
+.irow .thumb img { width: 100%; height: 100%; object-fit: cover; }
+.irow .meta { margin-top: 6px; color: var(--ash); font-size: 15px; letter-spacing: -.025em; }
+.irow .go { width: 44px; height: 44px; border-radius: 9999px; border: 1px solid var(--fog); display: grid; place-items: center; color: var(--graphite); transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+.irow:hover .go { background: var(--ink); border-color: var(--ink); color: var(--on-ink); }
+
+/* JD map */
+.map { margin-top: 56px; display: grid; gap: 0; background: var(--canvas); border-radius: var(--r-panel); box-shadow: var(--ring); padding: 8px 40px; }
+.mrow { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 12px 56px; padding-block: 28px; border-top: 1px solid var(--line); }
+.mrow:first-child { border-top: 0; }
+.mrow .k { display: block; margin-bottom: 6px; }
+.mrow .jd { color: var(--charcoal); }
+.ev { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-width: 0; }
+.ev a { font-weight: 600; color: var(--ink); }
+.ev p { color: var(--ash); font-size: 15px; letter-spacing: -.025em; margin-top: 2px; }
+
+/* Case studies */
+.case + .case { border-top: 1px solid var(--line); }
+.chead { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 40px 72px; align-items: end; margin-top: 20px; }
+.chead .lead { margin-top: 20px; }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 32px; }
+.facts div { min-width: 0; padding-top: 14px; border-top: 1px solid var(--line); }
+.facts dt { font-size: 13px; letter-spacing: -.026em; color: var(--ash); }
+.facts dd { margin-top: 4px; font-size: 15px; letter-spacing: -.025em; color: var(--charcoal); font-weight: 600; }
+.sub-h { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; margin-top: 88px; }
+.sub-h h3 { font-family: var(--sans); font-weight: 650; font-size: 25px; line-height: 1.2; letter-spacing: -.015em; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 28px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 28px; }
+.pcard { display: flex; flex-direction: column; text-align: left; background: var(--tint); border: 0; border-radius: var(--r-card); padding: 0; overflow: hidden; color: var(--ink); min-width: 0; }
+.pcard .shot { display: block; padding: clamp(20px, 3.4vw, 40px) clamp(20px, 3.4vw, 40px) 0; }
+.pcard .shot img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r-img); box-shadow: 0 0 0 1px rgba(12, 41, 126, .07); transition: transform .4s ease; }
+.pcard:hover .shot img { transform: translateY(-3px); }
+@media (prefers-reduced-motion: reduce) { .pcard .shot img { transition: none; } .pcard:hover .shot img { transform: none; } }
+.pcard .body { display: flex; flex-direction: column; gap: 8px; flex: 1; padding: 28px clamp(28px, 4vw, 48px) clamp(32px, 4vw, 48px); }
+.pcard .body .pd { color: var(--slate); font-size: 15px; letter-spacing: -.025em; line-height: 1.55; }
+.pcard .where { margin-top: auto; padding-top: 12px; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; letter-spacing: -.026em; color: var(--graphite); font-weight: 600; }
+.grid3 .pcard .body { padding-inline: clamp(24px, 3vw, 36px); }
+.cfoot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 40px; }
+
+/* Knowledge base */
+.feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px; margin-top: 72px; }
+.feat { padding-top: 20px; border-top: 1px solid var(--line); min-width: 0; }
+.feat p { margin-top: 8px; color: var(--slate); font-size: 15px; letter-spacing: -.025em; }
+.demo { margin-top: 72px; background: var(--tint); border-radius: var(--r-card); padding: clamp(16px, 4vw, 48px); }
+.demo-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding: 0 8px 20px; }
+.demo-bar p { color: var(--slate); font-size: 15px; letter-spacing: -.025em; }
+.demo-bar b { color: var(--ink); font-weight: 650; }
+.demo .panel { height: min(760px, 78vh); }
+.demo iframe { border: 0; width: 100%; height: 100%; display: block; }
+.full { position: fixed; inset: 0; z-index: 90; background: var(--canvas); display: flex; flex-direction: column; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.full .fbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 60px; padding-block: 8px; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); box-shadow: 0 1px 0 var(--line); }
+.full .fbar b { font-weight: 650; font-size: 15px; letter-spacing: -.025em; }
+.full iframe { flex: 1; border: 0; width: 100%; }
+
+/* About */
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 48px 96px; align-items: start; }
+.about .lead { margin-top: 24px; }
+.roles { border-top: 1px solid var(--line); }
+.role { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 4px 24px; padding-block: 22px; border-bottom: 1px solid var(--line); }
+.role b { font-weight: 650; color: var(--charcoal); }
+.role p { color: var(--slate); }
+
+/* Toolkit */
+.toolkit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 40px 96px; align-items: start; margin-top: 112px; padding-top: 56px; border-top: 1px solid var(--line); }
+.toolkit .h-idx { margin-top: 16px; }
+.toolkit .lead { margin-top: 16px; font-size: 17px; }
+.tgroups { display: grid; gap: 32px; }
+.tgroup .cap { display: block; margin-bottom: 12px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.tags li { background: var(--canvas); box-shadow: var(--ring); border-radius: 8px; padding: 9px 16px; font-size: 15px; font-weight: 600; letter-spacing: -.025em; color: var(--charcoal); line-height: 1.2; }
+
+/* Contact */
+.contact { text-align: center; }
+.contact .lead { margin: 20px auto 0; font-size: 17px; color: var(--ash); max-width: 520px; }
+.cbox { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 40px; }
+.cpill { display: inline-flex; align-items: center; gap: 12px; background: var(--canvas); box-shadow: var(--ring); border-radius: 9999px; padding: 6px 6px 6px 22px; font-size: 15px; letter-spacing: -.025em; color: var(--charcoal); max-width: 100%; }
+.cpill span { user-select: all; overflow-wrap: anywhere; }
+.foot { margin-top: 112px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; text-align: left; }
+.foot a { color: var(--ash); }
+
+/* Slide viewer */
+.viewer { position: fixed; inset: 0; z-index: 100; background: var(--canvas); display: flex; flex-direction: column; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.v-top { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; min-height: 68px; padding-block: 12px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+.v-top .t { min-width: 0; flex: 1 1 200px; }
+.v-top .t b { display: block; font-weight: 650; font-size: 15px; letter-spacing: -.025em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.seg { display: inline-flex; background: var(--frost); border-radius: 9999px; padding: 4px; gap: 2px; }
+.seg button { border: 0; background: transparent; border-radius: 9999px; padding: 6px 14px; font-size: 15px; letter-spacing: -.025em; color: var(--ash); transition: color .2s ease; }
+.seg button:hover { color: var(--charcoal); }
+.seg button[aria-pressed="true"] { background: var(--canvas); color: var(--charcoal); font-weight: 600; box-shadow: var(--ring); }
+.round { width: 44px; height: 44px; flex: none; border-radius: 9999px; border: 1px solid var(--fog); background: var(--canvas); display: grid; place-items: center; color: var(--graphite); transition: border-color .2s ease, color .2s ease; }
+.round:hover:not(:disabled) { border-color: var(--graphite); color: var(--ink); }
+.round:disabled { opacity: .35; cursor: default; }
+.v-stage { flex: 1; min-height: 0; display: flex; align-items: center; gap: 20px; padding-block: 8px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); background: var(--frost); }
+.v-stage figure { margin: 0; flex: 1; min-width: 0; height: 100%; display: grid; place-items: center; }
+.v-stage img { max-width: 100%; max-height: 100%; width: auto; height: auto; border-radius: var(--r-img); box-shadow: 0 0 0 1px rgba(12, 41, 126, .07); background: var(--canvas); cursor: pointer; }
+.v-foot { display: flex; align-items: center; gap: 16px; padding-block: 14px 16px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+.v-count { flex: none; font-size: 13px; letter-spacing: -.026em; color: var(--ash); min-width: 88px; }
+.v-thumbs { display: flex; gap: 10px; overflow-x: auto; flex: 1; min-width: 0; padding: 3px; scrollbar-width: thin; }
+.v-thumbs button { flex: none; width: 104px; border: 0; padding: 0; background: none; border-radius: 10px; overflow: hidden; opacity: .55; transition: opacity .2s ease; }
+.v-thumbs button img { aspect-ratio: 16 / 9; width: 100%; object-fit: cover; }
+.v-thumbs button:hover { opacity: 1; }
+.v-thumbs button.on { opacity: 1; box-shadow: 0 0 0 2px var(--ink); }
+body.lock { overflow: hidden; }
+
+/* Responsive */
+@media (max-width: 1040px) {
+  .chead, .about, .toolkit { grid-template-columns: minmax(0, 1fr); }
+  .grid3, .feats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nav nav a.opt { display: none; }
+}
+@media (max-width: 760px) {
+  .sec { padding-block: 88px; }
+  .hero { padding-top: 56px; }
+  .nav nav { display: none; }
+  .nav .btn { margin-left: auto; }
+  .irow { grid-template-columns: 112px minmax(0, 1fr); gap: 18px; padding-block: 22px; }
+  .irow .go { display: none; }
+  .h-idx { font-size: clamp(24px, 6.4vw, 36px); line-height: 1.2; }
+  .irow .meta { font-size: 13px; }
+  .map { padding: 4px 24px; }
+  .mrow { grid-template-columns: minmax(0, 1fr); }
+  .grid2, .grid3, .feats { grid-template-columns: minmax(0, 1fr); }
+  .sub-h { margin-top: 64px; }
+  .role { grid-template-columns: minmax(0, 1fr); }
+  .v-stage .round { display: none; }
+  .v-stage { padding-inline: 12px; }
+  .v-top .seg { order: 3; width: 100%; }
+  .v-top .seg button { flex: 1; padding-inline: 8px; }
+  .v-thumbs button { width: 80px; }
+  .v-count { min-width: 0; }
+}
+@media (max-width: 420px) {
+  .facts { grid-template-columns: minmax(0, 1fr); }
+  .irow { grid-template-columns: minmax(0, 1fr); }
+  .irow .thumb { display: none; }
+  .hero .actions .btn { flex: 1 1 100%; }
+}
+</style>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Mohab Medhat, back to top"><span class="badge-m" aria-hidden="true">M</span>Mohab Medhat</a>
+    <nav aria-label="Sections">
+      <a href="#work" data-nav="work">Work</a>
+      <a href="#role" data-nav="role">For this role</a>
+      <a class="opt" href="#kb" data-nav="kb">Knowledge base</a>
+      <a class="opt" href="#about" data-nav="about">About</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="chip"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8 11.2 6 6 11.2.8 6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Instructional Designer · Agent education</span>
+      <h1 class="display">Complex policy, made clear for the agents who use it.</h1>
+      <p class="lead">I turn policies, process changes and QA data into training agents can use on a live contact: learning journeys, job aids, scenario quizzes and a searchable knowledge base.</p>
+      <div class="actions">
+        <a class="btn btn-ink" href="#work">See the work</a>
+        <a class="btn btn-ghost" href="#kb">Try the knowledge base</a>
+      </div>
+      <div class="showcase">
+        <div class="panel"><img src="img/kb-home.jpg" alt="Policy Hub, a knowledge base with a search box and the most-used rules" width="1440" height="900"></div>
+      </div>
+      <p class="cap">Policy Hub, a live knowledge base for agents. You can use it further down this page.</p>
+      <div class="prev" aria-label="Previous work">
+        <span>Previously at</span><b>Tabby</b><b>TaskUs</b><b>Ain Shams Press</b>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work index -->
+  <section class="sec" id="work">
+    <div class="wrap">
+      <span class="chip"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8 11.2 6 6 11.2.8 6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Selected work</span>
+      <h2 class="h-sec" style="margin-top:16px">Four pieces, one training cycle.</h2>
+      <p class="lead" style="margin-top:16px">Teach the rule, simplify the process, reinforce it on the job, then read the data to see what to fix next.</p>
+      <div class="index">
+        <a class="irow" href="#verify">
+          <div class="thumb"><img src="img/verify/t/01.jpg" alt="" width="400" height="225"></div>
+          <div><h3 class="h-idx">Customer Verification</h3><p class="meta">Teach · New-hire learning journey · 22 slides</p></div>
+          <span class="go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+        <a class="irow" href="#refund">
+          <div class="thumb"><img src="img/refund/t/01.jpg" alt="" width="400" height="225"></div>
+          <div><h3 class="h-idx">Refund &amp; Return Policy</h3><p class="meta">Simplify · Visual policy guide · 10 slides</p></div>
+          <span class="go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+        <a class="irow" href="#kb">
+          <div class="thumb"><img src="img/kb-home.jpg" alt="" width="1440" height="900"></div>
+          <div><h3 class="h-idx">Policy Hub</h3><p class="meta">Reinforce · Live knowledge base · 3 policies</p></div>
+          <span class="go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+        <a class="irow" href="#qa">
+          <div class="thumb"><img src="img/perf/t/01.jpg" alt="" width="400" height="225"></div>
+          <div><h3 class="h-idx">From QA data to training priorities</h3><p class="meta">Improve · Training needs analysis · 7 slides</p></div>
+          <span class="go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- JD map -->
+  <section class="sec frost" id="role">
+    <div class="wrap">
+      <span class="chip"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8 11.2 6 6 11.2.8 6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Built for this role</span>
+      <h2 class="h-sec" style="margin-top:16px">Mapped to the job description.</h2>
+      <p class="lead" style="margin-top:16px">Each line on the left comes from the role. Next to it is the work that shows it.</p>
+      <div class="map">
+        <div class="mrow">
+          <p class="jd"><span class="cap k">Key responsibility</span>Design end-to-end programs and learning journeys, from learning objectives and content sequencing to practice, assessment and reinforcement.</p>
+          <div class="ev"><a class="tlink" href="#verify">Customer Verification module</a><p>A route map, four stops, a job aid, six scenario questions and an answer key that sends learners back to the right slide.</p></div>
+        </div>
+        <div class="mrow">
+          <p class="jd"><span class="cap k">Key responsibility</span>Break down complex product updates and processes into simple, engaging learning content: slides, job aids, walkthroughs.</p>
+          <div class="ev"><a class="tlink" href="#refund">Refund &amp; Return guide</a><p>Three deadlines, a hidden grace period and an approval rule on one timeline.</p></div>
+        </div>
+        <div class="mrow">
+          <p class="jd"><span class="cap k">Key responsibility</span>Create practical, scenario-based learning that helps agents apply knowledge to real customer situations.</p>
+          <div class="ev"><a class="tlink" href="#verify">Verification scenario quiz</a><a class="tlink" href="#kb">Knowledge Check with live tickets</a><p>Agents answer inside a simulated ticket and see the customer react.</p></div>
+        </div>
+        <div class="mrow">
+          <p class="jd"><span class="cap k">Key responsibility</span>Keep the content library and training materials tidy, consistent and aligned with our voice and tools.</p>
+          <div class="ev"><a class="tlink" href="#kb">Policy Hub</a><p>Three policies in one structure, with the same section pattern, reply format and tone.</p></div>
+        </div>
+        <div class="mrow">
+          <p class="jd"><span class="cap k">Key responsibility</span>Use learner feedback, assessment results, QA insights and operational data to continuously improve content.</p>
+          <div class="ev"><a class="tlink" href="#qa">QA data to training priorities</a><p>A month of CSAT and QA scores turned into one refresher, one coaching plan and one measurement fix.</p></div>
+        </div>
+        <div class="mrow">
+          <p class="jd"><span class="cap k">Skills</span>Hands-on experience using AI models to automate and scale L&amp;D work, including quizzes, assessments and content creation.</p>
+          <div class="ev"><a class="tlink" href="#kb">Policy Hub, built with Claude</a><a class="tlink" href="#tools">AI toolkit</a><p>Policy decks turned into articles, decision flows, 22 replies and an 11-question check, with gaps in the source flagged. Also works with ChatGPT, Gemini Notebook, Gamma and Base44.</p></div>
+        </div>
+        <div class="mrow">
+          <p class="jd"><span class="cap k">Skills</span>Hands-on experience with learning and design tools such as Figma, Canva, Articulate Rise/Storyline, Google Slides and LMS platforms.</p>
+          <div class="ev"><a class="tlink" href="#tools">Design and learning toolkit</a><p>Figma, Articulate 360 and Kahoot!, plus Gamma for presentations.</p></div>
+        </div>
+        <div class="mrow">
+          <p class="jd"><span class="cap k">Preferred</span>Experience with knowledge bases, and with training, QA, compliance or product teams.</p>
+          <div class="ev"><a class="tlink" href="#kb">Policy Hub</a><a class="tlink" href="#qa">QA data review</a><a class="tlink" href="#verify">GDPR verification module</a><p>Also works in Notion.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case 1: Verification -->
+  <section class="sec case" id="verify">
+    <div class="wrap">
+      <span class="chip"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8 11.2 6 6 11.2.8 6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Teach · New-hire learning journey</span>
+      <div class="chead">
+        <div>
+          <h2 class="h-sec">Verify first. Then help safely.</h2>
+          <p class="lead">A self-paced module that teaches new teammates customer verification and GDPR, from why it matters to six real scenarios.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Audience</dt><dd>New teammates, no experience needed</dd></div>
+          <div><dt>Time</dt><dd>About 15 minutes</dd></div>
+          <div><dt>Format</dt><dd>22-slide self-paced deck</dd></div>
+          <div><dt>Assessment</dt><dd>6 scenarios, hints, answer key</dd></div>
+        </dl>
+      </div>
+      <div class="sub-h"><h3>Best practice in this module</h3><p class="cap">Select a slide to open it in the full deck.</p></div>
+      <div class="grid2">
+        <button class="pcard" type="button" data-open="verify" data-slide="2">
+          <span class="shot"><img src="img/verify/02.jpg" alt="Slide 2: What you'll learn, four stops with their slide ranges" loading="lazy" width="1600" height="900"></span>
+          <span class="body"><span class="h-card">Show the route before the content.</span><span class="pd">Four stops, each with its slide range and a time estimate. Learners know what is coming and where to go back to.</span><span class="where num">Slide 2 of 22 ›</span></span>
+        </button>
+        <button class="pcard" type="button" data-open="verify" data-slide="8">
+          <span class="shot"><img src="img/verify/08.jpg" alt="Slide 8: How to say it, a warm reply next to a cold one" loading="lazy" width="1600" height="900"></span>
+          <span class="body"><span class="h-card">Model the words, not only the rule.</span><span class="pd">The same gift-receiver rule written two ways. The warm version gives a reason and a next step; the cold one shows what to avoid.</span><span class="where num">Slide 8 of 22 ›</span></span>
+        </button>
+        <button class="pcard" type="button" data-open="verify" data-slide="14">
+          <span class="shot"><img src="img/verify/14.jpg" alt="Slide 14: The cheat sheet covering every verification case" loading="lazy" width="1600" height="900"></span>
+          <span class="body"><span class="h-card">Leave a job aid behind.</span><span class="pd">Seven situations on one screen, from chat to email typos. Built to be screenshotted and kept next to the agent's screen.</span><span class="where num">Slide 14 of 22 ›</span></span>
+        </button>
+        <button class="pcard" type="button" data-open="verify" data-slide="16">
+          <span class="shot"><img src="img/verify/16.jpg" alt="Slide 16: Quiz question one, the wrong email, with a hint" loading="lazy" width="1600" height="900"></span>
+          <span class="body"><span class="h-card">Assess with situations, then remediate.</span><span class="pd">Every question is a customer case with a hint. The answer key links each answer to the slide to review and sorts learners into three next steps.</span><span class="where num">Slides 16 to 22 ›</span></span>
+        </button>
+      </div>
+      <div class="cfoot">
+        <button class="btn btn-ink" type="button" data-open="verify" data-slide="1">View the full presentation</button>
+        <span class="cap num">22 slides · arrow keys or swipe to move through it</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case 2: Refund -->
+  <section class="sec case" id="refund">
+    <div class="wrap">
+      <span class="chip"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8 11.2 6 6 11.2.8 6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Simplify · Visual policy guide</span>
+      <div class="chead">
+        <div>
+          <h2 class="h-sec">Refund &amp; Return Policy.</h2>
+          <p class="lead">A ten-slide teammate guide. It turns a policy with three deadlines, a hidden grace period and an approval rule into one timeline and a few clear decisions.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Audience</dt><dd>Customer Support teammates</dd></div>
+          <div><dt>Format</dt><dd>10-slide visual guide</dd></div>
+          <div><dt>Covers</dt><dd>Return requests, exceptions, refunds</dd></div>
+          <div><dt>Ends with</dt><dd>A six-detail Slack stock-check template</dd></div>
+        </dl>
+      </div>
+      <div class="sub-h"><h3>Best practice in this guide</h3><p class="cap">Select a slide to open it in the full deck.</p></div>
+      <div class="grid2">
+        <button class="pcard" type="button" data-open="refund" data-slide="2">
+          <span class="shot"><img src="img/refund/02.jpg" alt="Slide 2: Three deadlines, one timeline" loading="lazy" width="1600" height="900"></span>
+          <span class="body"><span class="h-card">Put every deadline on one line.</span><span class="pd">Day 0, 14, 17 and 44 on a single timeline, with what agents tell customers kept apart from what stays internal.</span><span class="where num">Slide 2 of 10 ›</span></span>
+        </button>
+        <button class="pcard" type="button" data-open="refund" data-slide="5">
+          <span class="shot"><img src="img/refund/05.jpg" alt="Slide 5: After day 17, run three checks" loading="lazy" width="1600" height="900"></span>
+          <span class="body"><span class="h-card">Turn judgement into named checks.</span><span class="pd">After day 17, three checks replace "use your judgement": the reason for the delay, the item's condition and the order's age.</span><span class="where num">Slide 5 of 10 ›</span></span>
+        </button>
+        <button class="pcard" type="button" data-open="refund" data-slide="8">
+          <span class="shot"><img src="img/refund/08.jpg" alt="Slide 8: The refund timeline from item sent back to bank processing" loading="lazy" width="1600" height="900"></span>
+          <span class="body"><span class="h-card">Explain the why, so agents can too.</span><span class="pd">The refund timeline shows where the 14 working days go, so agents can explain the wait to a customer instead of only quoting it.</span><span class="where num">Slide 8 of 10 ›</span></span>
+        </button>
+        <button class="pcard" type="button" data-open="refund" data-slide="9">
+          <span class="shot"><img src="img/refund/09.jpg" alt="Slide 9: Scanned but not refunded, a yes or no decision tree" loading="lazy" width="1600" height="900"></span>
+          <span class="body"><span class="h-card">Use a decision tree for the branching case.</span><span class="pd">"Scanned but not refunded" comes down to one question. Each branch ends in the exact action and the ticket status to set.</span><span class="where num">Slide 9 of 10 ›</span></span>
+        </button>
+      </div>
+      <div class="cfoot">
+        <button class="btn btn-ink" type="button" data-open="refund" data-slide="1">View the full presentation</button>
+        <span class="cap num">10 slides</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case 3: Knowledge base -->
+  <section class="sec case" id="kb">
+    <div class="wrap">
+      <span class="chip"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8 11.2 6 6 11.2.8 6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Reinforce · Live knowledge base</span>
+      <div class="chead">
+        <div>
+          <h2 class="h-sec">Policy Hub.</h2>
+          <p class="lead">A searchable knowledge base for agents on live chats, emails and calls. It brings three policies into one structure, with decision flows, copy-ready replies and a monthly Knowledge Check.</p>
+        </div>
+        <dl class="facts num">
+          <div><dt>Policies</dt><dd>Returns, Warranty &amp; Repair, Verification</dd></div>
+          <div><dt>Content</dt><dd>33 sections, 49 quick answers</dd></div>
+          <div><dt>Tools</dt><dd>4 decision flows, 22 copy-ready replies</dd></div>
+          <div><dt>Knowledge Check</dt><dd>11 scenarios in 6 question types</dd></div>
+        </dl>
+      </div>
+      <div class="feats">
+        <div class="feat"><h4 class="h-card">Search the way customers ask.</h4><p>Type "scanned 3 weeks ago, still no refund". It reads the day count, matches synonyms and typos, and opens the rule that applies.</p></div>
+        <div class="feat"><h4 class="h-card">Decide in two or three taps.</h4><p>Each decision flow asks the questions an agent would ask, then shows the action and the reply to send.</p></div>
+        <div class="feat"><h4 class="h-card">Replies sit under their rule.</h4><p>All 22 replies link to the section they follow, with customer details left in [brackets] to fill in.</p></div>
+        <div class="feat"><h4 class="h-card">A monthly Knowledge Check.</h4><p>Live tickets where the customer reacts, plus spot-the-slip, put-in-order and match questions. Every answer links back to its rule.</p></div>
+        <div class="feat"><h4 class="h-card">Built with AI, checked against the source.</h4><p>Made with Claude from the policy decks. Where a deck leaves a case open, the article says so and tells agents to ask their Team Leader.</p></div>
+        <div class="feat"><h4 class="h-card">Edited by the team, in place.</h4><p>On the live version, editors update a section, a reply or a quiz question, and it is live for everyone with no republish.</p></div>
+      </div>
+      <div class="demo" id="kb-demo">
+        <div class="demo-bar"><p><b>Try it here.</b> Search a case, run a decision flow or take the Knowledge Check.</p><button class="btn btn-ghost btn-sm" type="button" id="kb-full">Open full screen</button></div>
+        <div class="panel"><iframe id="kb-frame" src="kb/index.html" title="Policy Hub knowledge base" loading="lazy"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case 4: QA -->
+  <section class="sec case" id="qa">
+    <div class="wrap">
+      <span class="chip"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8 11.2 6 6 11.2.8 6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Improve · Training needs analysis</span>
+      <div class="chead">
+        <div>
+          <h2 class="h-sec">From QA data to training priorities.</h2>
+          <p class="lead">Before building training, I read a month of team performance to decide which gaps need a refresher, which need coaching and which need better measurement.</p>
+        </div>
+        <dl class="facts num">
+          <div><dt>Data</dt><dd>385 tickets, 95 QA evaluations</dd></div>
+          <div><dt>Measures</dt><dd>CSAT, QA score, 14 QA attributes</dd></div>
+          <div><dt>Period</dt><dd>1 to 30 June 2026</dd></div>
+          <div><dt>Output</dt><dd>Three priorities, each with its fix</dd></div>
+        </dl>
+      </div>
+      <div class="sub-h"><h3>How the data became a plan</h3><p class="cap">Select a slide to open it in the full deck.</p></div>
+      <div class="grid3">
+        <button class="pcard" type="button" data-open="perf" data-slide="4">
+          <span class="shot"><img src="img/perf/04.jpg" alt="Slide 4: One attribute is lagging, First Contact Resolution at 60 percent" loading="lazy" width="1600" height="900"></span>
+          <span class="body"><span class="h-card">Find the team-wide gap.</span><span class="pd">First Contact Resolution sits at 60%, 14 points below every other attribute. A gap that wide calls for a team refresher, not one-to-one fixes.</span><span class="where num">Slide 4 of 7 ›</span></span>
+        </button>
+        <button class="pcard" type="button" data-open="perf" data-slide="5">
+          <span class="shot"><img src="img/perf/05.jpg" alt="Slide 5: When CSAT and quality disagree, a scatter of agents" loading="lazy" width="1600" height="900"></span>
+          <span class="body"><span class="h-card">Cross-check two measures.</span><span class="pd">Plotting CSAT against QA score shows agents whose customers are happy while the process is skipped. One number alone hides that.</span><span class="where num">Slide 5 of 7 ›</span></span>
+        </button>
+        <button class="pcard" type="button" data-open="perf" data-slide="7">
+          <span class="shot"><img src="img/perf/07.jpg" alt="Slide 7: Where to focus next, three priorities" loading="lazy" width="1600" height="900"></span>
+          <span class="body"><span class="h-card">Match the fix to the cause.</span><span class="pd">A process refresher, side-by-side coaching for three agents, and wider survey and QA coverage so the next read is more reliable.</span><span class="where num">Slide 7 of 7 ›</span></span>
+        </button>
+      </div>
+      <div class="cfoot">
+        <button class="btn btn-ink" type="button" data-open="perf" data-slide="1">View the full presentation</button>
+        <span class="cap num">7 slides</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="sec frost" id="about">
+    <div class="wrap about">
+      <div>
+        <span class="chip"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8 11.2 6 6 11.2.8 6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>About</span>
+        <h2 class="h-sec" style="margin-top:16px">I learned the policies on the floor first.</h2>
+        <p class="lead">I handled the contacts before I designed the training for them, so I build for what an agent needs in the middle of a conversation.</p>
+      </div>
+      <div class="roles">
+        <div class="role"><b>Tabby</b><p>Customer Support Agent for the UAE and KSA markets, then promoted to Disputes.</p></div>
+        <div class="role"><b>TaskUs</b><p>Content Designer and Co-Trainer.</p></div>
+        <div class="role"><b>Ain Shams Press</b><p>Visual and learning content design.</p></div>
+        <div class="role"><b>Freelance</b><p>Visual learning content and short-form video.</p></div>
+        <div class="role"><b>Education</b><p>Currently studying design at university.</p></div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="toolkit" id="tools">
+        <div>
+          <span class="chip"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8 11.2 6 6 11.2.8 6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Toolkit</span>
+          <h3 class="h-idx">The tools I work with.</h3>
+          <p class="lead">AI tools to draft, build and scale content faster, and design and learning tools to make it look right and land with learners.</p>
+        </div>
+        <div class="tgroups">
+          <div class="tgroup"><span class="cap">AI</span>
+            <ul class="tags"><li>Claude</li><li>ChatGPT</li><li>Gemini Notebook</li><li>Gamma</li><li>Base44</li></ul>
+          </div>
+          <div class="tgroup"><span class="cap">Design and learning</span>
+            <ul class="tags"><li>Figma</li><li>Articulate 360</li><li>Kahoot!</li><li>Notion</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="sec contact" id="contact">
+    <div class="wrap">
+      <h2 class="display">Let's talk.</h2>
+      <p class="lead">Happy to walk through any of these pieces, or build a sample from one of your upcoming releases.</p>
+      <div class="cbox">
+        <span class="cpill"><span id="c-email">Mohab.aboserie@gmail.com</span><button class="btn btn-ghost btn-sm" type="button" data-copy="c-email">Copy</button></span>
+        <span class="cpill"><span id="c-phone" class="num">+20 101 191 9468</span><button class="btn btn-ghost btn-sm" type="button" data-copy="c-phone">Copy</button></span>
+      </div>
+      <div class="foot">
+        <span class="cap num">© 2026 Mohab Medhat. Work samples shown for portfolio review.</span>
+        <a class="cap tlink" href="#top">Back to top</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Slide viewer -->
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="v-title" hidden>
+  <div class="v-top">
+    <div class="t"><b id="v-title"></b></div>
+    <div class="seg" role="group" aria-label="Choose a presentation">
+      <button type="button" data-deck="verify" aria-pressed="false">Verification</button>
+      <button type="button" data-deck="refund" aria-pressed="false">Refund</button>
+      <button type="button" data-deck="perf" aria-pressed="false">QA data</button>
+    </div>
+    <button class="round" type="button" id="v-close" aria-label="Close the presentation"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2 2l10 10M12 2 2 12"/></svg></button>
+  </div>
+  <div class="v-stage">
+    <button class="round" type="button" id="v-prev" aria-label="Previous slide"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+    <figure><img id="v-img" alt=""></figure>
+    <button class="round" type="button" id="v-next" aria-label="Next slide"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
+  </div>
+  <div class="v-foot">
+    <span class="v-count num" id="v-count" aria-live="polite"></span>
+    <div class="v-thumbs" id="v-thumbs" aria-label="All slides"></div>
+  </div>
+</div>
+
+<script>
+(() => {
+  'use strict';
+  const DECKS = {
+    verify: { title: 'Customer Verification · Verify first. Then help safely.', n: 22 },
+    refund: { title: 'Refund & Return Policy', n: 10 },
+    perf: { title: 'From QA data to training priorities', n: 7 }
+  };
+  const pad = i => String(i).padStart(2, '0');
+  const $ = id => document.getElementById(id);
+  const V = { deck: null, i: 1, from: null };
+  const viewer = $('viewer'), img = $('v-img'), thumbs = $('v-thumbs');
+
+  function show(i) {
+    const d = DECKS[V.deck];
+    V.i = Math.max(1, Math.min(d.n, i));
+    img.src = 'img/' + V.deck + '/' + pad(V.i) + '.jpg';
+    img.alt = d.title + ', slide ' + V.i + ' of ' + d.n;
+    $('v-count').textContent = 'Slide ' + V.i + ' of ' + d.n;
+    $('v-prev').disabled = V.i === 1;
+    $('v-next').disabled = V.i === d.n;
+    thumbs.querySelectorAll('button').forEach((b, k) => {
+      const on = k + 1 === V.i;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-current', on ? 'true' : 'false');
+      if (on) b.scrollIntoView({ block: 'nearest', inline: 'center' });
+    });
+    [V.i - 1, V.i + 1].forEach(k => { if (k >= 1 && k <= d.n) { const p = new Image(); p.src = 'img/' + V.deck + '/' + pad(k) + '.jpg'; } });
+  }
+  function load(deck, i) {
+    const d = DECKS[deck]; if (!d) return;
+    V.deck = deck;
+    $('v-title').textContent = d.title;
+    viewer.querySelectorAll('[data-deck]').forEach(b => b.setAttribute('aria-pressed', b.dataset.deck === deck ? 'true' : 'false'));
+    let h = '';
+    for (let k = 1; k <= d.n; k++) h += '<button type="button" data-i="' + k + '" aria-label="Slide ' + k + '"><img src="img/' + deck + '/t/' + pad(k) + '.jpg" alt="" loading="lazy" width="400" height="225"></button>';
+    thumbs.innerHTML = h;
+    show(i || 1);
+  }
+  function open(deck, i, from) {
+    V.from = from || null;
+    viewer.hidden = false; document.body.classList.add('lock');
+    load(deck, i);
+    $('v-close').focus();
+  }
+  function close() {
+    viewer.hidden = true; document.body.classList.remove('lock');
+    if (V.from) V.from.focus();
+  }
+
+  document.addEventListener('click', e => {
+    const o = e.target.closest('[data-open]');
+    if (o) { open(o.dataset.open, +o.dataset.slide || 1, o); return; }
+    const t = e.target.closest('#v-thumbs button');
+    if (t) { show(+t.dataset.i); return; }
+    const dk = e.target.closest('[data-deck]');
+    if (dk) { if (dk.dataset.deck !== V.deck) load(dk.dataset.deck, 1); return; }
+    const c = e.target.closest('[data-copy]');
+    if (c) copy(c);
+  });
+  $('v-close').addEventListener('click', close);
+  $('v-prev').addEventListener('click', () => show(V.i - 1));
+  $('v-next').addEventListener('click', () => show(V.i + 1));
+  img.addEventListener('click', e => { const r = img.getBoundingClientRect(); show(V.i + (e.clientX - r.left > r.width / 2 ? 1 : -1)); });
+  document.addEventListener('keydown', e => {
+    if (!viewer.hidden) {
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); show(V.i + 1); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(V.i - 1); }
+      else if (e.key === 'Home') show(1);
+      else if (e.key === 'End') show(DECKS[V.deck].n);
+      else if (e.key === 'Tab') {
+        const f = [...viewer.querySelectorAll('button:not([disabled])')].filter(b => b.offsetParent !== null);
+        if (!f.length) return;
+        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+      }
+    } else if (e.key === 'Escape' && full) closeFull();
+  });
+  let sx = null;
+  viewer.addEventListener('touchstart', e => { if (e.target.closest('.v-stage')) sx = e.touches[0].clientX; }, { passive: true });
+  viewer.addEventListener('touchend', e => {
+    if (sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx; sx = null;
+    if (Math.abs(dx) > 40) show(V.i + (dx < 0 ? 1 : -1));
+  });
+
+  /* Knowledge base full screen */
+  let full = null;
+  function openFull() {
+    if (full) return;
+    full = document.createElement('div');
+    full.className = 'full'; full.setAttribute('role', 'dialog'); full.setAttribute('aria-modal', 'true'); full.setAttribute('aria-label', 'Policy Hub, full screen');
+    full.innerHTML = '<div class="fbar"><b>Policy Hub</b><button class="btn btn-ghost btn-sm" type="button" id="kb-exit">Close full screen</button></div>';
+    full.appendChild($('kb-frame'));
+    document.body.appendChild(full); document.body.classList.add('lock');
+    $('kb-exit').addEventListener('click', closeFull); $('kb-exit').focus();
+  }
+  function closeFull() {
+    if (!full) return;
+    document.querySelector('#kb-demo .panel').appendChild($('kb-frame'));
+    full.remove(); full = null; document.body.classList.remove('lock');
+    $('kb-full').focus();
+  }
+  $('kb-full').addEventListener('click', openFull);
+
+  /* Nav: mark the section in view */
+  const links = [...document.querySelectorAll('[data-nav]')];
+  const groups = { work: ['work', 'verify', 'refund', 'qa'], role: ['role'], kb: ['kb'], about: ['about'] };
+  const secs = Object.values(groups).flat().map(id => $(id)).filter(Boolean);
+  let tick = false;
+  function spy() {
+    tick = false;
+    let cur = null;
+    secs.forEach(s => { if (s.getBoundingClientRect().top <= 140) cur = s.id; });
+    const key = cur && Object.keys(groups).find(k => groups[k].includes(cur));
+    links.forEach(a => a.classList.toggle('on', a.dataset.nav === key));
+  }
+  window.addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(spy); } }, { passive: true });
+  spy();
+
+  /* Copy contact details */
+  async function copy(btn) {
+    const el = $(btn.dataset.copy); const text = el.textContent.trim();
+    try { await navigator.clipboard.writeText(text); btn.textContent = 'Copied'; }
+    catch (err) { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected'; }
+    setTimeout(() => { btn.textContent = 'Copy'; }, 1600);
+  }
+})();
+</script>
