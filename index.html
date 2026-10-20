@@ -194,8 +194,8 @@ a { color: inherit; }
 .round:hover:not(:disabled) { border-color: var(--graphite); color: var(--ink); }
 .round:disabled { opacity: .35; cursor: default; }
 .v-stage { flex: 1; min-height: 0; display: flex; align-items: center; gap: 20px; padding-block: 8px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); background: var(--frost); }
-.v-stage figure { margin: 0; flex: 1; min-width: 0; height: 100%; display: grid; place-items: center; }
-.v-stage img { max-width: 100%; max-height: 100%; width: auto; height: auto; border-radius: var(--r-img); box-shadow: 0 0 0 1px rgba(12, 41, 126, .07); background: var(--canvas); cursor: pointer; }
+.v-stage figure { margin: 0; flex: 1; min-width: 0; align-self: stretch; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); place-items: center; }
+.v-stage img { max-width: 100%; max-height: 100%; min-height: 0; aspect-ratio: 16 / 9; width: auto; height: auto; border-radius: var(--r-img); box-shadow: 0 0 0 1px rgba(12, 41, 126, .07); background: var(--canvas); cursor: pointer; }
 .v-foot { display: flex; align-items: center; gap: 16px; padding-block: 14px 16px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
 .v-count { flex: none; font-size: 13px; letter-spacing: -.026em; color: var(--ash); min-width: 88px; }
 .v-thumbs { display: flex; gap: 10px; overflow-x: auto; flex: 1; min-width: 0; padding: 3px; scrollbar-width: thin; }
